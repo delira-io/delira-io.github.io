@@ -13,34 +13,68 @@
     "implicit" : [ "read", "write" ]
   } ],
   "paths" : {
-    "/example" : {
-      "get" : {
-        "summary" : "Server example operation",
-        "description" : "This is an example operation to show how security is applied to the call.",
-        "responses" : {
-          "200" : {
-            "description" : "OK"
-          }
-        }
-      }
-    },
-    "/ping" : {
-      "get" : {
-        "summary" : "Server heartbeat operation",
-        "description" : "This operation shows how to override the global security defined above, as we want to open it up for all users.",
-        "security" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "OK"
-          }
-        }
-      }
-    },
-    "/ips" : {
+    "/ips/{ip-address}" : {
       "get" : {
         "summary" : "All information about an IP",
         "description" : "This operation will retrieve all known information about a single IP address",
-        "security" : [ ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "ip-address",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true,
+          "description" : "Query IP address"
+        } ],
+        "security" : [ {
+          "implicit" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/ips/{ip-address}/geo" : {
+      "get" : {
+        "summary" : "Geo location information about an IP",
+        "description" : "This operation will retrieve all known information about a single IP address",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "ip-address",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true,
+          "description" : "Query IP address"
+        } ],
+        "security" : [ {
+          "implicit" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/ips/{ip-address}/risk" : {
+      "get" : {
+        "summary" : "Risk information about an IP",
+        "description" : "This operation will retrieve all known information about a single IP address",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "ip-address",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true,
+          "description" : "Query IP address"
+        } ],
+        "security" : [ {
+          "implicit" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "OK"
