@@ -35,10 +35,32 @@
           }
         }
       }
+    },
+    "/ips" : {
+      "get" : {
+        "summary" : "All information about an IP",
+        "description" : "This operation will retrieve all known information about a single IP address",
+        "security" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
     }
   },
   "components" : {
-    "schemas" : { },
+    "schemas" : {
+      "Schema" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      }
+    },
     "securitySchemes" : {
       "implicit" : {
         "type" : "oauth2",
